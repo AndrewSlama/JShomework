@@ -34,14 +34,35 @@ getPrompts();
 }
 function getPrompts(){
 
-  length = prompt("Please enter the desired password length. Only numberical values 8-128");
+  getValidateLength();
+  //alert(length);
+  //alert(typeof length);
+   
   isSpecialChar = confirm("Please select if you would like special characters");
   isLowerChar = confirm("Please select if you would like lowercase character");  
   isUpperChar = confirm("Please select if you would like uppercase character");
   isNumbChar = confirm("Please select if you would like number characters"); 
-
 }
-// Add event listener to generate button
+ function getValidateLength() {
+  var isValid = false;
+  length = parseInt(prompt("Please enter the desired password length. Only numberical values 8-128"));
 
-
-
+  if(!isNaN(length) && length >= 8 && length <= 128) {
+    isValid = true;
+ }
+ if(isValid==false) {
+  getValidateLength();
+ }
+}
+function getSpecialChar() {
+  isSpecialChar = confirm("Please select if you would like special characters"); 
+}
+function getLowerCase() {
+  isLowerChar = confirm("Please select if you would like lowercase character");
+}
+function getUpperCase() {
+  isUpperChar = confirm("Please select if you would like uppercase character");
+}
+function getNumberChar() {
+  isNumbChar = confirm("Please select if you would like number characters"); 
+}
