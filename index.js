@@ -13,7 +13,14 @@ var generateBtn = document.querySelector('#generate');
 // Write password to the #password input
 function writePassword() {
 getPrompts();
-  return; 
+var  choiceArr = buildChoiceArr();
+
+if (choiceArr.length === 0) {
+  alert("You must choose 1 text field, lets begin again");
+  length = 0;
+writePassword();
+};
+var  password = buildPassword(choiceArr);
  /*  var password = generatePassword();
   var passwordText = document.querySelector("#password");
   //All Characters
@@ -30,7 +37,31 @@ getPrompts();
     document.getElementById("password").value = password;
     */
   
-  passwordText.value = password;
+  //passwordText.value = password;
+}
+function buildPassword(completeArr) {
+  var passwordFinal = '';
+  
+
+  return passwordFinal;
+}
+
+function buildChoiceArr() {
+  var charPoolr = [];
+  if (isSpecialChar) {
+    charPoolr = charPoolr.concat(specialChar);
+  };
+  if (isLowerChar) {
+    charPoolr = charPoolr.concat(lowerChar);
+  };
+  if (isUpperChar) {
+    charPoolr = charPoolr.concat(upperChar);
+  };
+  if (isNumbChar) {
+    charPoolr = charPoolr.concat(numbChar);
+  };
+  //alert(charPoolr);
+  return charPoolr;
 }
 function getPrompts(){
 
