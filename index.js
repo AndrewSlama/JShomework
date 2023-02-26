@@ -10,42 +10,30 @@ var generateBtn = document.querySelector('#generate');
   var isUpperChar = false;
   var isNumbChar = false;
   generateBtn.addEventListener("click", writePassword);
-// Write password to the #password input
+// Write password to the #password input. Button activated on click, calls final password.
 function writePassword() {
-getPrompts();
+  getPrompts();
 var  choiceArr = buildChoiceArr();
 
 if (choiceArr.length === 0) {
   alert("You must choose 1 text field, lets begin again");
   length = 0;
-writePassword();
+  writePassword();
 };
 var  password = buildPassword(choiceArr);
- /*  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  //All Characters
-  var chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+{}<>[]';
-  //Length
-  var passwordLegth = 128;
-  var password = '';
-
-
-  for (var i = 0; i < passwordLegth; i++) {
-    var randomNumber = Math.floor(Math.random() * chars.length); 
-    password += chars.substring(randomNumber, randomNumber + 1);    alertbox.innerHTML = "New PassWord Copied: <br> " + password;
-    }
-    document.getElementById("password").value = password;
-    */
-  
-  //passwordText.value = password;
+alert(password);
+document.getElementById("password").value = password;
 }
+//Final password building
 function buildPassword(completeArr) {
   var passwordFinal = '';
-  
+  for (var i = 0; i < length; i++) {
+   passwordFinal += completeArr[Math.floor(Math.random() * completeArr.length)];
+  };
 
   return passwordFinal;
-}
-
+};
+//Builds character base for passwords final
 function buildChoiceArr() {
   var charPoolr = [];
   if (isSpecialChar) {
@@ -74,11 +62,12 @@ function getPrompts(){
   isUpperChar = confirm("Please select if you would like uppercase character");
   isNumbChar = confirm("Please select if you would like number characters"); 
 }
+//Validation of string and values length
  function getValidateLength() {
   var isValid = false;
   length = parseInt(prompt("Please enter the desired password length. Only numberical values 8-128"));
 
-  if(!isNaN(length) && length >= 8 && length <= 128) {
+ if(!isNaN(length) && length >= 8 && length <= 128) {
     isValid = true;
  }
  if(isValid==false) {
